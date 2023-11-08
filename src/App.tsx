@@ -2,9 +2,10 @@ import {
   Admin,
   Resource,
   ShowGuesser,
-  SimpleListConfigurable
+  SimpleListConfigurable,
+  ListGuesser
 } from "react-admin";
-import { dataProvider } from "./dataProviderFcrud";
+import { dataProvider } from "./dataProvider";
 import { UserList } from "./users";
 import { PostList, PostEdit, PostCreate } from "./posts";
 import PostIcon from "@mui/icons-material/Book";
@@ -18,6 +19,6 @@ export const App = () => (
   <Admin dataProvider={dataProvider} dashboard={Dashboard} authProvider={authProvider} >
     {/* <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/> */}
     {/* <Resource name="users" list={UserList} show={ShowGuesser} recordRepresentation="name" icon={UserIcon}/> */}
-    <Resource name="potatoes" list={PotatoeList} />
+    <Resource name="dummy" list={ListGuesser} />
   </Admin>
 );
