@@ -19,6 +19,6 @@ export const App = () => (
   <Admin dataProvider={dataProvider} dashboard={Dashboard} authProvider={authProvider} >
     {/* <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/> */}
     {/* <Resource name="users" list={UserList} show={ShowGuesser} recordRepresentation="name" icon={UserIcon}/> */}
-    <Resource name="dummy" list={ListGuesser} />
+    <Resource name="orions" list={ListGuesser} />
   </Admin>
 );
