@@ -1,4 +1,4 @@
-import { List, Datagrid, TextField, EmailField, SimpleList } from "react-admin";
+import { List, Datagrid, TextField, EmailField, SimpleList, EditButton, Edit, SimpleForm, TextInput, Create} from "react-admin";
 import { useMediaQuery, Theme } from "@mui/material";
 
 export const CheckList = () => {
@@ -10,12 +10,33 @@ export const CheckList = () => {
                     secondaryText={(record) => record.email}
                 />
             ) : (
-                <Datagrid rowClick="edit">
+                <Datagrid rowClick="show">
                     <TextField source="id" />
                     <TextField source="dag" />
                     <EmailField source="email" />
+                    <EditButton />
                 </Datagrid>
             )}
         </List>
     );
 };
+
+
+export const CheckListEdit = () => (
+    <Edit>
+        <SimpleForm>
+            <TextInput source="id" />
+            <TextInput source="dag" />
+            <TextInput source="email" />
+        </SimpleForm>
+    </Edit>
+);
+
+export const CheckListCreate = () => (
+    <Create>
+        <SimpleForm>
+            <TextInput source="dag" />
+            <TextInput source="email" />
+        </SimpleForm>
+    </Create>
+);
