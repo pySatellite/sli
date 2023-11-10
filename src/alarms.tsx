@@ -1,4 +1,4 @@
-import { List, Datagrid, TextField, EmailField, SimpleList, EditButton, Edit, SimpleForm, TextInput, Create} from "react-admin";
+import { List, Datagrid, TextField, EmailField, SimpleList, EditButton, Edit, SimpleForm, TextInput, Create, ReferenceField, ReferenceInput} from "react-admin";
 import { useMediaQuery, Theme } from "@mui/material";
 
 export const AlarmList = () => {
@@ -11,6 +11,7 @@ export const AlarmList = () => {
                 />
             ) : (
                 <Datagrid rowClick="show">
+                    <ReferenceField source="airflow_id" reference="airflows" link="show" />
                     <TextField source="id" />
                     <TextField source="dag" />
                     <EmailField source="email" />
@@ -22,21 +23,23 @@ export const AlarmList = () => {
 };
 
 
-export const AlarmListEdit = () => (
+export const AlarmEdit = () => (
     <Edit>
         <SimpleForm>
             <TextInput source="id" />
             <TextInput source="dag" />
             <TextInput source="email" />
+            <ReferenceInput source="airflow_id" reference="airflows" />
         </SimpleForm>
     </Edit>
 );
 
-export const AlarmListCreate = () => (
+export const AlarmCreate = () => (
     <Create>
         <SimpleForm>
             <TextInput source="dag" />
             <TextInput source="email" />
+            <ReferenceInput source="airflow_id" reference="airflows" />
         </SimpleForm>
     </Create>
 );
