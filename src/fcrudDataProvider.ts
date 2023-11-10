@@ -1,7 +1,7 @@
 import { DataProvider, fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 
-const apiUrl = 'http://localhost:8000';
+const apiUrl = import.meta.env.VITE_API_FLY;
 const httpClient = fetchUtils.fetchJson;
 
 export const fcrudDataProvider: DataProvider = {
@@ -15,7 +15,7 @@ export const fcrudDataProvider: DataProvider = {
             _start: (page - 1) * perPage,
             _end: page * perPage,
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `${apiUrl}/${resource}_ra?${stringify(query)}`;
 
         return httpClient(url).then(({ headers, json }) => {
             if (!headers.has('x-total-count')) {
@@ -82,7 +82,7 @@ export const fcrudDataProvider: DataProvider = {
     },
 
     create: (resource, params) =>
-        httpClient(`${apiUrl}/alarms`, {
+        httpClient(`${apiUrl}/${resource}`, {
             method: 'POST',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({

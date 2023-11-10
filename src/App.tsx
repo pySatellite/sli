@@ -2,24 +2,18 @@ import {
   Admin,
   Resource,
   ShowGuesser,
-  EditGuesser,
-  SimpleListConfigurable,
-  ListGuesser
 } from "react-admin";
-import { dataProvider } from "./dataProvider";
 import { fcrudDataProvider } from "./fcrudDataProvider";
-import { UserList } from "./users";
-import { PostList, PostEdit, PostCreate } from "./posts";
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import { Dashboard } from './Dashboard';
 import { authProvider } from './authProvider';
-import { CheckList, CheckListEdit, CheckListCreate } from './checklists'
+import { AlarmList, AlarmListEdit, AlarmListCreate } from './alarmlists'
+import { AirflowList, AirflowEdit, AirflowCreate } from "./airflows";
 
 
 export const App = () => (
   <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} authProvider={authProvider} >
-    {/* <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/> */}
-    {/* <Resource name="users" list={UserList} show={ShowGuesser} recordRepresentation="name" icon={UserIcon}/> */}
-    <Resource name="checklist" icon={ChecklistIcon} list={CheckList} show={ShowGuesser} edit={CheckListEdit} create={CheckListCreate} />
+    <Resource name="alarms" icon={ChecklistIcon} list={AlarmList} show={ShowGuesser} edit={AlarmListEdit} create={AlarmListCreate} />
+    <Resource name="airflows" icon={ChecklistIcon} list={AirflowList} show={ShowGuesser} edit={AirflowEdit} create={AirflowCreate} />
   </Admin>
 );

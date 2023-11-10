@@ -1,7 +1,7 @@
 import { List, Datagrid, TextField, EmailField, SimpleList, EditButton, Edit, SimpleForm, TextInput, Create} from "react-admin";
 import { useMediaQuery, Theme } from "@mui/material";
 
-export const CheckList = () => {
+export const AlarmList = () => {
     const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));return (
         <List>
             {isSmall ? (
@@ -22,7 +22,7 @@ export const CheckList = () => {
 };
 
 
-export const CheckListEdit = () => (
+export const AlarmListEdit = () => (
     <Edit>
         <SimpleForm>
             <TextInput source="id" />
@@ -32,7 +32,7 @@ export const CheckListEdit = () => (
     </Edit>
 );
 
-export const CheckListCreate = () => (
+export const AlarmListCreate = () => (
     <Create>
         <SimpleForm>
             <TextInput source="dag" />
