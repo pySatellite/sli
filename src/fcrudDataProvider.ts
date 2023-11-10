@@ -1,30 +1,37 @@
 import { DataProvider, fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 
-const apiUrl = 'http://127.0.0.1:8000';
+const apiUrl = import.meta.env.VITE_API_LOCAL;
 const httpClient = fetchUtils.fetchJson;
 
-export const dataProvider: DataProvider = {
-    getListPage: (resource, params) => {
+export const fcrudDataProvider: DataProvider = {
+    getList: (resource, params) => {
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = {
-            sort: JSON.stringify([field, order]),
-            range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-            filter: JSON.stringify(params.filter),
+            ...fetchUtils.flattenObject(params.filter),
+            _sort: field,
+            _order: order,
+            _start: (page - 1) * perPage,
+            _end: page * perPage,
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `${apiUrl}/${resource}_ra?${stringify(query)}`;
 
-        return httpClient(url).then(({ headers, json }) => ({
-            data: json,
-            total: parseInt((headers.get('content-range') || "0").split('/').pop() || 0, 10),
-        }));
+        return httpClient(url).then(({ headers, json }) => {
+            if (!headers.has('x-total-count')) {
+                throw new Error(
+                    'The X-Total-Count header is missing in the HTTP Response. The jsonServer Data Provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare X-Total-Count in the Access-Control-Expose-Headers header?'
+                );
+            }
+            return {
+                data: json,
+                total: parseInt(
+                    headers.get('x-total-count').split('/').pop(),
+                    10
+                ),
+            };
+        });
     },
-
-    getList: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}`).then(({ json }) => ({
-            data: json,
-        })),
 
     getOne: (resource, params) =>
         httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({

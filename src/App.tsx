@@ -2,24 +2,19 @@ import {
   Admin,
   Resource,
   ShowGuesser,
-  SimpleListConfigurable,
-  ListGuesser
 } from "react-admin";
-import { dataProvider } from "./dataProvider";
-import { UserList } from "./users";
-import { PostList, PostEdit, PostCreate } from "./posts";
-import PostIcon from "@mui/icons-material/Book";
-import UserIcon from "@mui/icons-material/Group";
+import { fcrudDataProvider } from "./fcrudDataProvider";
+import ChecklistIcon from '@mui/icons-material/Checklist';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import { Dashboard } from './Dashboard';
 import { authProvider } from './authProvider';
-import { PotatoeList } from './potatoes';
-import { OrionList } from './orions';
+import { AlarmList, AlarmEdit, AlarmCreate } from './alarms'
+import { AirflowList, AirflowEdit, AirflowCreate } from "./airflows";
 
 
 export const App = () => (
-  <Admin dataProvider={dataProvider} dashboard={Dashboard} authProvider={authProvider} >
-    {/* <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/> */}
-    {/* <Resource name="users" list={UserList} show={ShowGuesser} recordRepresentation="name" icon={UserIcon}/> */}
-    <Resource name="orions" list={OrionList} />
+  <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} authProvider={authProvider} >
+    <Resource name="alarms" icon={ChecklistIcon} list={AlarmList} show={ShowGuesser} edit={AlarmEdit} create={AlarmCreate} />
+    <Resource name="airflows" icon={AccountTreeIcon} list={AirflowList} show={ShowGuesser} edit={AirflowEdit} create={AirflowCreate} recordRepresentation="name" />
   </Admin>
 );
