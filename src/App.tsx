@@ -7,6 +7,7 @@ import {
   ListGuesser
 } from "react-admin";
 import { dataProvider } from "./dataProvider";
+import { fcrudDataProvider } from "./fcrudDataProvider";
 import { UserList } from "./users";
 import { PostList, PostEdit, PostCreate } from "./posts";
 import ChecklistIcon from '@mui/icons-material/Checklist';
@@ -16,7 +17,7 @@ import { CheckList, CheckListEdit, CheckListCreate } from './checklists'
 
 
 export const App = () => (
-  <Admin dataProvider={dataProvider} dashboard={Dashboard} authProvider={authProvider} >
+  <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} authProvider={authProvider} >
     {/* <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon}/> */}
     {/* <Resource name="users" list={UserList} show={ShowGuesser} recordRepresentation="name" icon={UserIcon}/> */}
     <Resource name="checklist" icon={ChecklistIcon} list={CheckList} show={ShowGuesser} edit={CheckListEdit} create={CheckListCreate} />
