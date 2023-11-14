@@ -1,4 +1,5 @@
 import { Datagrid, List, TextField, NumberField, SimpleList} from 'react-admin';
+import { Edit, SimpleForm, TextInput } from 'react-admin';
 import { useMediaQuery, Theme } from "@mui/material";
 
 export const OwnerList = () => {
@@ -10,7 +11,7 @@ export const OwnerList = () => {
                     primaryText={(record) => record.name}
                 />
         ) : (
-        <Datagrid rowClick="edit">
+        <Datagrid rowClick="show">
             <NumberField source="id" />
             <TextField source="name" />
         </Datagrid>
@@ -18,3 +19,13 @@ export const OwnerList = () => {
     </List>
     );
 }
+
+
+export const OwnerEdit = () => (
+    <Edit>
+        <SimpleForm>
+            <TextInput source="id" />
+            <TextInput source="name" />
+        </SimpleForm>
+    </Edit>
+);

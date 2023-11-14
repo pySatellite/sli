@@ -1,4 +1,5 @@
 import { ArrayField, ChipField, Datagrid, List, NumberField, SingleFieldList, TextField, SimpleList} from 'react-admin';
+import { ArrayInput, Edit, NumberInput, SimpleForm, SimpleFormIterator, TextInput, Create } from 'react-admin';
 import { useMediaQuery, Theme } from "@mui/material";
 
 export const RocketList = () => {
@@ -12,7 +13,7 @@ export const RocketList = () => {
                     tertiaryText={(record) => record.thrust}
                 />
             ) : (
-            <Datagrid rowClick="edit">
+            <Datagrid rowClick="show">
                 <TextField source="id" />
                 <TextField source="name" />
                 <TextField source="country" />
@@ -24,3 +25,43 @@ export const RocketList = () => {
     </List>
     );
 }
+
+
+
+
+export const RocketEdit = () => (
+    <Edit>
+        <SimpleForm>
+            <NumberInput source="id" />
+            <TextInput source="name" />
+            <TextInput source="country" />
+            <NumberInput source="thrust" />
+            <NumberInput source="payload" />
+            <ArrayInput source="engines">
+                <SimpleFormIterator>
+                    <NumberInput source="number" />
+                    <TextInput source="name" />
+                </SimpleFormIterator>
+            </ArrayInput>
+        </SimpleForm>
+    </Edit>
+);
+
+
+export const RocketCreate = () => (
+      <Create>
+        <SimpleForm>
+            <TextInput source="name" />
+            <TextInput source="country" />
+            <NumberInput source="thrust" />
+            <NumberInput source="payload" />
+            <ArrayInput source="engines">
+                <SimpleFormIterator>
+                    <NumberInput source="number" />
+                    <TextInput source="name" />
+                </SimpleFormIterator>
+            </ArrayInput>
+            
+        </SimpleForm>
+      </Create>
+);

@@ -2,12 +2,12 @@ import {
   Admin,
   Resource,
   ShowGuesser,
-  ListGuesser
+  EditGuesser
 } from "react-admin";
 import { fcrudDataProvider } from "./fcrudDataProvider";
 import { Dashboard } from './Dashboard';
-import { SatelliteList } from './satellites'
-import { RocketList } from './rockets'
+import { SatelliteList, SatelliteEdit, SatelliteCreate } from './satellites'
+import { RocketList, RocketEdit, RocketCreate } from './rockets'
 import { OwnerList } from './owners'
 
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
@@ -17,8 +17,30 @@ import Face5Icon from '@mui/icons-material/Face5';
 
 export const App = () => (
   <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} >
-    <Resource name="satellites" icon={SatelliteAltIcon} list={SatelliteList} />
-    <Resource name="rockets" icon={RocketIcon} list={RocketList}  />
-    <Resource name="owners" icon={Face5Icon} list={OwnerList} />
+    <Resource 
+      name="satellites" 
+      icon={SatelliteAltIcon} 
+      list={SatelliteList} 
+      show={ShowGuesser} 
+      edit={SatelliteEdit}
+      create={SatelliteCreate}
+    />
+    <Resource 
+      name="rockets" 
+      icon={RocketIcon} 
+      list={RocketList}  
+      recordRepresentation="name" 
+      show={ShowGuesser}
+      edit={RocketEdit}
+      create={RocketCreate}
+    />
+    <Resource 
+      name="owners" 
+      icon={Face5Icon} 
+      list={OwnerList} 
+      recordRepresentation="name" 
+      show={ShowGuesser}
+      edit={EditGuesser} 
+    />
   </Admin>
 );
