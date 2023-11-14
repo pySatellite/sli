@@ -2,19 +2,21 @@ import {
   Admin,
   Resource,
   ShowGuesser,
+  ListGuesser
 } from "react-admin";
 import { fcrudDataProvider } from "./fcrudDataProvider";
-import ChecklistIcon from '@mui/icons-material/Checklist';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import { Dashboard } from './Dashboard';
 import { authProvider } from './authProvider';
-import { AlarmList, AlarmEdit, AlarmCreate } from './alarms'
-import { AirflowList, AirflowEdit, AirflowCreate } from "./airflows";
+
+import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
+import RocketIcon from '@mui/icons-material/Rocket';
+import Face5Icon from '@mui/icons-material/Face5';
 
 
 export const App = () => (
-  <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} authProvider={authProvider} >
-    <Resource name="alarms" icon={ChecklistIcon} list={AlarmList} show={ShowGuesser} edit={AlarmEdit} create={AlarmCreate} />
-    <Resource name="airflows" icon={AccountTreeIcon} list={AirflowList} show={ShowGuesser} edit={AirflowEdit} create={AirflowCreate} recordRepresentation="name" />
+  <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} >
+    <Resource name="satellites" icon={SatelliteAltIcon} list={ListGuesser} show={ShowGuesser} />
+    <Resource name="rockets" icon={RocketIcon} list={ListGuesser} show={ShowGuesser} />
+    <Resource name="owners" icon={Face5Icon} list={ListGuesser} show={ShowGuesser} />
   </Admin>
 );
