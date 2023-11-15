@@ -1,6 +1,6 @@
-import { Datagrid, DateField, List, NumberField, ReferenceField, TextField, SimpleList, Create} from 'react-admin';
+import { Datagrid, DateField, List, NumberField, ReferenceField, TextField, SimpleList, Create, DateTimeInput} from 'react-admin';
 import { useMediaQuery, Theme } from "@mui/material";
-import { DateInput, Edit, NumberInput, ReferenceInput, SimpleForm, TextInput } from 'react-admin';
+import { Edit, NumberInput, ReferenceInput, SimpleForm, TextInput, DateInput } from 'react-admin';
 
 export const SatelliteList = () => {
     const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
@@ -16,7 +16,7 @@ export const SatelliteList = () => {
                 <Datagrid rowClick="show">
                     <NumberField source="id" />
                     <TextField source="name" />
-                    <DateField source="launch_time" />
+                    <TextField source="launch_time" />
                     <NumberField source="latitude" />
                     <NumberField source="longitude" />
                     <NumberField source="angle" />
@@ -34,7 +34,7 @@ export const SatelliteEdit = () => (
         <SimpleForm>
             <NumberInput source="id" />
             <TextInput source="name" />
-            <DateInput source="launch_time" />
+            <DateTimeInput source="launch_time" />
             <NumberInput source="latitude" />
             <NumberInput source="longitude" />
             <NumberInput source="angle" />
@@ -48,11 +48,11 @@ export const SatelliteEdit = () => (
 export const SatelliteCreate = () => (
     <Create>
         <SimpleForm>
-            <TextInput source="name" />
-            <DateInput source="launch_time" />
-            <NumberInput source="latitude" />
-            <NumberInput source="longitude" />
-            <NumberInput source="angle" />
+            <TextInput source="name" defaultValue="pySatellite-000" />
+            <DateTimeInput source="launch_time" />
+            <NumberInput source="latitude" defaultValue="37.4932385" />
+            <NumberInput source="longitude" defaultValue="126.9175228" />
+            <NumberInput source="angle" defaultValue="77.777" />
             <ReferenceInput source="owner_id" reference="owners" link="show" />
             <ReferenceInput source="rocket_id" reference="rockets" link="show" />
         </SimpleForm>
