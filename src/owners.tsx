@@ -1,5 +1,8 @@
-import { Datagrid, List, TextField, NumberField, SimpleList} from 'react-admin';
-import { Edit, SimpleForm, TextInput } from 'react-admin';
+import {
+    Create, List, Edit, 
+    SimpleForm, TextInput,
+    Datagrid, TextField, NumberField, SimpleList
+} from 'react-admin';
 import { useMediaQuery, Theme } from "@mui/material";
 
 export const OwnerList = () => {
@@ -28,4 +31,12 @@ export const OwnerEdit = () => (
             <TextInput source="name" />
         </SimpleForm>
     </Edit>
+);
+
+export const OwnerCreate = () => (
+    <Create>
+        <SimpleForm>
+            <TextInput source="name" />
+        </SimpleForm>
+    </Create>
 );

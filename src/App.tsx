@@ -8,7 +8,7 @@ import { fcrudDataProvider } from "./fcrudDataProvider";
 import { Dashboard } from './Dashboard';
 import { SatelliteList, SatelliteEdit, SatelliteCreate } from './satellites'
 import { RocketList, RocketEdit, RocketCreate } from './rockets'
-import { OwnerList } from './owners'
+import { OwnerList, OwnerCreate, OwnerEdit } from './owners'
 
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import RocketIcon from '@mui/icons-material/Rocket';
@@ -40,7 +40,8 @@ export const App = () => (
       list={OwnerList} 
       recordRepresentation="name" 
       show={ShowGuesser}
-      edit={EditGuesser} 
+      edit={OwnerEdit}
+      create={OwnerCreate}
     />
   </Admin>
 );
