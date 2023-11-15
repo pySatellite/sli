@@ -2,7 +2,6 @@ import {
   Admin,
   Resource,
   ShowGuesser,
-  EditGuesser
 } from "react-admin";
 import { fcrudDataProvider } from "./fcrudDataProvider";
 import { Dashboard } from './Dashboard';
