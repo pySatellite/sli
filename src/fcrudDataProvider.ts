@@ -1,7 +1,7 @@
 import { DataProvider, fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 
-const apiUrl = import.meta.env.VITE_API_LOCAL;
+const apiUrl = import.meta.env.VITE_API_FLY;
 const httpClient = fetchUtils.fetchJson;
 
 export const fcrudDataProvider: DataProvider = {
