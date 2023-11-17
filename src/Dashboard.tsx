@@ -1,11 +1,16 @@
-const ver = import.meta.env.VITE_SLI_VERSION
+
 
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-// import Grid from '@mui/material/Grid';
 import { BarChart } from '@mui/x-charts/BarChart';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+
+import { getConfig } from './Helper'
+
+import { useStore } from 'react-admin';
+
+import queryClient from './queryClient'; // Import the queryClient
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -36,24 +41,40 @@ const Item = styled(Paper)(({ theme }) => ({
     );
   }
 
-  
+
 export const Dashboard = () => {
+    // const queryClient = new QueryClient();
+    // // queryClient.setQueryData('aaa', 'aaa');
+    // queryClient.setQueryData("aaaaa", "aaaaa")
+    const exampleKey: string = queryClient.getQueryData('exampleKey');
+    const welcome: string = queryClient.getQueryData('welcome');
+
+    console.log("exampleKey:" + exampleKey)
+    console.log("welcome:" + welcome)
+    const ver = import.meta.env.VITE_SLI_VERSION
+
+
+    const isok = queryClient.getQueryData('isok')
+    const version = queryClient.getQueryData('version')
+    const welcom_msg = queryClient.getQueryData('welcom_msg')
+    const server_version = queryClient.getQueryData('server_version')
+
     return (
-        <Grid container spacing={2}>
-            <Grid xs={12} md={8}>
-                <SimpleCharts />
-            </Grid>
-            <Grid xs={12} md={4}>
-                <center>
-                    <img src="https://www.intelligence-airbusds.com/files/pmedia/public/r65367_9_banner-constellation-intelligence-airbus.jpg" height="333" width="100%"/>
-                </center>
-            </Grid>
-                <Grid xs={12} md={4}>
-            <Item>version : {ver}</Item>
-            </Grid>
-            <Grid xs={12} md={8}>
-                <Item>🛰️ Satellite Location Information 🌌 🗺️ 📈 💨</Item>
-            </Grid>
+    <Grid container spacing={2}>
+        <Grid xs={12} md={8}>
+            <SimpleCharts />
         </Grid>
+        <Grid xs={12} md={4}>
+            <center>
+                <img src="./images/satellites.webp" height="333" width="100%"/>
+            </center>
+        </Grid>
+            <Grid xs={12} md={4}>
+        <Item>version : {ver}</Item>
+        </Grid>
+        <Grid xs={12} md={8}>
+            <Item>🛰️ Satellite Location Information 🌌 🗺️ 📈 💨isok:{isok}, version:{version}, welcom_msg:{welcom_msg}, server_version:{server_version}</Item>
+        </Grid>
+    </Grid>
     );
 }
