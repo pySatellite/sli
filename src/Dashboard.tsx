@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import { BarChart } from '@mui/x-charts/BarChart';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import queryClient from './queryClient'; // Import the queryClient
+import { useQuery } from "react-query";
 
 
 
@@ -40,9 +41,9 @@ const Item = styled(Paper)(({ theme }) => ({
 export const Dashboard = () => {
     const ver = import.meta.env.VITE_SLI_VERSION
 
-    const deploy_dt = queryClient.getQueryData('deploy_dt');
-    const isok = queryClient.getQueryData('isok')
-    const wel_msg = queryClient.getQueryData('wel_msg')
+    const { data: deploy_dt } = useQuery('deploy_dt', () => queryClient.getQueryData('deploy_dt'));
+    const { data: isok } = useQuery('isok', () => queryClient.getQueryData('isok'));
+    const { data: wel_msg } = useQuery('wel_msg', () => queryClient.getQueryData('wel_msg'));
 
     return (
     <Grid container spacing={2}>

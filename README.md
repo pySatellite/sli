@@ -10,6 +10,7 @@
 - https://satellite-info.web.app
 - https://satellite.diginori.com
 - https://sli.diginori.com
+- const { data: wel_msg } = useQuery('wel_msg', () => queryClient.getQueryData('wel_msg'));
 
 ## Installation
 Install the application dependencies by running:
