@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export const Dashboard = () => {
     const ver = import.meta.env.VITE_SLI_VERSION
-    const { data: main_img } = useQuery('main_img', () => queryClient.getQueryData("main_img"));
+    const { data: img_main } = useQuery('img_main', () => queryClient.getQueryData("img_main"));
     const { data: deploy_dt } = useQuery('deploy_dt', () => queryClient.getQueryData("deploy_dt"));
     const { data: isok } = useQuery('isok', () => queryClient.getQueryData("isok"));
     const { data: wel_msg } = useQuery('wel_msg', () => queryClient.getQueryData("wel_msg"));
@@ -30,7 +30,7 @@ export const Dashboard = () => {
         </Grid>
         <Grid xs={12} md={4}>
             <center>
-                <img src={main_img} height="333" width="100%"/>
+                <img src={img_main} height="333" width="100%"/>
             </center>
         </Grid>
             <Grid xs={12} md={4}>

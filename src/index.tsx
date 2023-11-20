@@ -7,7 +7,7 @@ import setRemoteConfig from './data/firebaseApp'
 setRemoteConfig('deploy_dt');
 setRemoteConfig('isok');
 setRemoteConfig('wel_msg');
-setRemoteConfig('main_img');
+setRemoteConfig('img_main');
 setRemoteConfig('img_not_found');
 
 
