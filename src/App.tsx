@@ -2,19 +2,51 @@ import {
   Admin,
   Resource,
   ShowGuesser,
+  nanoDarkTheme , radiantLightTheme
 } from "react-admin";
-import { fcrudDataProvider } from "./fcrudDataProvider";
-import ChecklistIcon from '@mui/icons-material/Checklist';
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
-import { Dashboard } from './Dashboard';
-import { authProvider } from './authProvider';
-import { AlarmList, AlarmEdit, AlarmCreate } from './alarms'
-import { AirflowList, AirflowEdit, AirflowCreate } from "./airflows";
 
+import { fcrudDataProvider } from "./fcrudDataProvider";
+import { Dashboard } from './Dashboard';
+import { SatelliteList, SatelliteEdit, SatelliteCreate } from './satellites'
+import { RocketList, RocketEdit, RocketCreate } from './rockets'
+import { OwnerList, OwnerCreate, OwnerEdit } from './owners'
+
+import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
+import RocketIcon from '@mui/icons-material/Rocket';
+import Face5Icon from '@mui/icons-material/Face5';
+import NotFound from "./NotFound";
+import queryClient from './queryClient'; // Import the queryClient
+import { MyLayout} from "./MyLayout";
 
 export const App = () => (
-  <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} authProvider={authProvider} >
-    <Resource name="alarms" icon={ChecklistIcon} list={AlarmList} show={ShowGuesser} edit={AlarmEdit} create={AlarmCreate} />
-    <Resource name="airflows" icon={AccountTreeIcon} list={AirflowList} show={ShowGuesser} edit={AirflowEdit} create={AirflowCreate} recordRepresentation="name" />
-  </Admin>
+      <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} catchAll={NotFound} theme={radiantLightTheme} darkTheme={nanoDarkTheme}
+             queryClient={queryClient}
+             layout={MyLayout}>
+          <Resource
+            name="satellites"
+            icon={SatelliteAltIcon}
+            list={SatelliteList}
+            show={ShowGuesser}
+            edit={SatelliteEdit}
+            create={SatelliteCreate}
+          />
+          <Resource
+            name="rockets"
+            icon={RocketIcon}
+            list={RocketList}
+            recordRepresentation="name"
+            show={ShowGuesser}
+            edit={RocketEdit}
+            create={RocketCreate}
+          />
+          <Resource
+            name="owners"
+            icon={Face5Icon}
+            list={OwnerList}
+            recordRepresentation="name"
+            show={ShowGuesser}
+            edit={OwnerEdit}
+            create={OwnerCreate}
+          />
+      </Admin>
 );
