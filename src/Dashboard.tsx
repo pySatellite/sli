@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { useQuery } from "react-query";
 import queryClient from "./queryClient";
-import SimpleCharts from "./Chart"
+import SimpleCharts from "./charts/Chart"
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -21,7 +21,7 @@ export const Dashboard = () => {
     const { data: deploy_dt } = useQuery('deploy_dt', () => queryClient.getQueryData("deploy_dt"));
     const { data: isok } = useQuery('isok', () => queryClient.getQueryData("isok"));
     const { data: wel_msg } = useQuery('wel_msg', () => queryClient.getQueryData("wel_msg"));
-    
+
 
     return (
     <Grid container spacing={2}>

@@ -5,11 +5,11 @@ import {
   nanoDarkTheme , radiantLightTheme
 } from "react-admin";
 
-import { fcrudDataProvider } from "./fcrudDataProvider";
+import { fcrudDataProvider } from "./data/fcrudDataProvider";
 import { Dashboard } from './Dashboard';
-import { SatelliteList, SatelliteEdit, SatelliteCreate } from './satellites'
-import { RocketList, RocketEdit, RocketCreate } from './rockets'
-import { OwnerList, OwnerCreate, OwnerEdit } from './owners'
+import { SatelliteList, SatelliteEdit, SatelliteCreate } from './list/satellites'
+import { RocketList, RocketEdit, RocketCreate } from './list/rockets'
+import { OwnerList, OwnerCreate, OwnerEdit } from './list/owners'
 
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import RocketIcon from '@mui/icons-material/Rocket';
