@@ -4,6 +4,9 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { useQuery } from "react-query";
 import queryClient from "./data/queryClient";
 import SimpleCharts from "./charts/Chart"
+import ReCharts from "./charts/ReCharts"
+import Barchart from "./charts/NivoBar";
+import { Suspense } from 'react';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -26,11 +29,12 @@ export const Dashboard = () => {
     return (
     <Grid container spacing={2}>
         <Grid xs={12} md={8}>
-            <SimpleCharts />
+
+            <ReCharts />
         </Grid>
         <Grid xs={12} md={4}>
             <center>
-                <img src={img_main} height="333" width="100%"/>
+                <img src={img_main} height="333" width="90%"/>
             </center>
         </Grid>
             <Grid xs={12} md={4}>
@@ -47,6 +51,12 @@ export const Dashboard = () => {
         </Grid>
         <Grid xs={12} md={9}>
             <Item>wel_msg: {wel_msg}</Item>
+        </Grid>
+        <Grid xs={12} md={6}>
+            <SimpleCharts />
+        </Grid>
+        <Grid xs={12} md={6}>
+            <Barchart />
         </Grid>
     </Grid>
     );
