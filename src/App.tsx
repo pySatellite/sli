@@ -15,7 +15,7 @@ import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import RocketIcon from '@mui/icons-material/Rocket';
 import Face5Icon from '@mui/icons-material/Face5';
 import NotFound from "./NotFound";
-import queryClient from './queryClient'; // Import the queryClient
+import queryClient from './data/queryClient'; // Import the queryClient
 import { MyLayout} from "./MyLayout";
 
 export const App = () => (

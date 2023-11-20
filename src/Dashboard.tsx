@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { useQuery } from "react-query";
-import queryClient from "./queryClient";
+import queryClient from "./data/queryClient";
 import SimpleCharts from "./charts/Chart"
 
 
