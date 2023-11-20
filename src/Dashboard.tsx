@@ -46,6 +46,7 @@ export const Dashboard = () => {
     const { data: deploy_dt } = useQuery('deploy_dt', () => queryClient.getQueryData("deploy_dt"));
     const { data: isok } = useQuery('isok', () => queryClient.getQueryData("isok"));
     const { data: wel_msg } = useQuery('wel_msg', () => queryClient.getQueryData("wel_msg"));
+    const { data: main_img } = useQuery('main_img', () => queryClient.getQueryData("main_img"));
 
     return (
     <Grid container spacing={2}>
@@ -54,7 +55,7 @@ export const Dashboard = () => {
         </Grid>
         <Grid xs={12} md={4}>
             <center>
-                <img src="./images/satellites.webp" height="333" width="100%"/>
+                <img src={main_img} height="333" width="100%"/>
             </center>
         </Grid>
             <Grid xs={12} md={4}>
