@@ -18,11 +18,6 @@ import NotFound from "./NotFound";
 import queryClient from './queryClient'; // Import the queryClient
 import { MyLayout} from "./MyLayout";
 
-
-// const queryClient = new QueryClient();
-// queryClient.setQueryData('exampleKey', 'Hello from index.tsx!');
-// console.log(queryClient.getQueryData('exampleKey'))
-
 export const App = () => (
       <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} catchAll={NotFound} theme={radiantLightTheme} darkTheme={nanoDarkTheme}
              queryClient={queryClient}

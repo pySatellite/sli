@@ -4,11 +4,6 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { BarChart } from '@mui/x-charts/BarChart';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
-
-import { getConfig } from './Helper'
-
-import { useStore } from 'react-admin';
-
 import queryClient from './queryClient'; // Import the queryClient
 
 
@@ -43,21 +38,11 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export const Dashboard = () => {
-    // const queryClient = new QueryClient();
-    // // queryClient.setQueryData('aaa', 'aaa');
-    // queryClient.setQueryData("aaaaa", "aaaaa")
-    const exampleKey: string = queryClient.getQueryData('exampleKey');
-    const welcome: string = queryClient.getQueryData('welcome');
-
-    console.log("exampleKey:" + exampleKey)
-    console.log("welcome:" + welcome)
     const ver = import.meta.env.VITE_SLI_VERSION
 
-
+    const deploy_dt = queryClient.getQueryData('deploy_dt');
     const isok = queryClient.getQueryData('isok')
-    const version = queryClient.getQueryData('version')
-    const welcom_msg = queryClient.getQueryData('welcom_msg')
-    const server_version = queryClient.getQueryData('server_version')
+    const wel_msg = queryClient.getQueryData('wel_msg')
 
     return (
     <Grid container spacing={2}>
@@ -73,7 +58,16 @@ export const Dashboard = () => {
         <Item>version : {ver}</Item>
         </Grid>
         <Grid xs={12} md={8}>
-            <Item>🛰️ Satellite Location Information 🌌 🗺️ 📈 💨isok:{isok}, version:{version}, welcom_msg:{welcom_msg}, server_version:{server_version}</Item>
+            <Item>🛰️ Satellite Location Information 🌌 🗺️ 📈</Item>
+        </Grid>
+        <Grid xs={12} md={1}>
+            <Item>isok: {isok}</Item>
+        </Grid>
+        <Grid xs={12} md={2}>
+            <Item>deploy_dt: {deploy_dt}</Item>
+        </Grid>
+        <Grid xs={12} md={9}>
+            <Item>wel_msg: {wel_msg}</Item>
         </Grid>
     </Grid>
     );
