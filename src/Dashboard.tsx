@@ -19,7 +19,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export const Dashboard = () => {
-    const ver = import.meta.env.VITE_SLI_VERSION
+    let ver = import.meta.env.VITE_SLI_VERSION
+    ver = ver.concat("-", process.env.NODE_ENV)
     const { data: img_main } = useQuery('img_main', () => queryClient.getQueryData("img_main"));
     const { data: deploy_dt } = useQuery('deploy_dt', () => queryClient.getQueryData("deploy_dt"));
     const { data: isok } = useQuery('isok', () => queryClient.getQueryData("isok"));
