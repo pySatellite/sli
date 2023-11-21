@@ -8,6 +8,7 @@ import ReCharts from "./charts/ReCharts"
 import Barchart from "./charts/NivoBar";
 import { Common } from "./Common"
 import ListRocket from "./ListRocket";
+import SatelliteSimulation from './SatelliteSimulation'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -31,7 +32,7 @@ export const Dashboard = () => {
     <Grid container spacing={2}>
         {/*row 1*/}
         <Grid xs={12} md={8}>
-            <Barchart />
+            <SimpleCharts />
         </Grid>
         <Grid xs={12} md={4}>
             <center>
@@ -47,6 +48,23 @@ export const Dashboard = () => {
             <Item>🛰️ Satellite Location Information 🌌 🗺️ 📈</Item>
         </Grid>
 
+
+
+        {/*row 4*/}
+        <Grid xs={12} md={12}>
+            <Barchart />
+        </Grid>
+        <Grid xs={12} md={12}>
+            <ReCharts />
+        </Grid>
+
+        {/*row 5*/}
+        <Grid xs={12} md={12}>
+            <ListRocket perPage={10} />
+        </Grid>
+
+
+
         {/*row 3*/}
         <Grid xs={12} md={2}>
             <Item>isok: {isok}</Item>
@@ -58,17 +76,8 @@ export const Dashboard = () => {
             <Item>wel_msg: {wel_msg}</Item>
         </Grid>
 
-        {/*row 4*/}
         <Grid xs={12} md={12}>
-            <SimpleCharts />
-        </Grid>
-        <Grid xs={12} md={12}>
-            <ReCharts />
-        </Grid>
-
-        {/*row 5*/}
-        <Grid xs={12} md={12}>
-            <ListRocket perPage={10} />
+            <SatelliteSimulation />
         </Grid>
 
     </Grid>

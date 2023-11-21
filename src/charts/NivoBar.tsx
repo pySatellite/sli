@@ -90,8 +90,8 @@ const Barchart = () => {
                      */
                     legends: {
                         text: {
-                            fontSize: 12,
-                            fill: '#144288',
+                            fontSize: 16,
+                            fill: '#884414',
                         },
                     },
                     axis: {
@@ -100,8 +100,8 @@ const Barchart = () => {
                          */
                         legend: {
                             text: {
-                                fontSize: 10,
-                                fill: '#128118',
+                                fontSize: 16,
+                                fill: '#bd1414',
                             },
                         },
                         /**
@@ -109,8 +109,8 @@ const Barchart = () => {
                          */
                         ticks: {
                             text: {
-                                fontSize: 10,
-                                fill: '#174b49',
+                                fontSize: 14,
+                                fill: '#c713ce',
                             },
                         },
                     },
@@ -121,7 +121,7 @@ const Barchart = () => {
                 axisBottom={{
                     tickSize: 5, // 값 설명하기 위해 튀어나오는 점 크기
                     tickPadding: 5, // tick padding
-                    tickRotation: 0, // tick 기울기
+                    tickRotation: 15, // tick 기울기
                     legend: 'rocket', // bottom 글씨
                     legendPosition: 'middle', // 글씨 위치
                     legendOffset: 40, // 글씨와 chart간 간격
@@ -135,7 +135,7 @@ const Barchart = () => {
                     tickRotation: 0, // tick 기울기
                     legend: 'thrust', // left 글씨
                     legendPosition: 'middle', // 글씨 위치
-                    legendOffset: -60, // 글씨와 chart간 간격
+                    legendOffset: -70, // 글씨와 chart간 간격
                 }}
                 /**
                  * label 안보이게 할 기준 width

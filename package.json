@@ -25,7 +25,8 @@
     "react-admin": "^4.14.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
-    "recharts": "^2.10.1"
+    "recharts": "^2.10.1",
+    "three": "^0.158.0"
   },
   "devDependencies": {
     "@types/node": "^18.16.1",
