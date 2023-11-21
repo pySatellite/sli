@@ -1,7 +1,24 @@
-
+import { useGetList, Loading } from 'react-admin';
 import { ResponsiveBar } from '@nivo/bar';
 
+type Rocket = {
+    id: number;
+    name: string;
+    thrust: number;
+    payload: number;
+};
+
 const Barchart = () => {
+    const { data: rockets, total, isLoading, error } = useGetList<Rocket>(
+        'rockets',
+        {
+            pagination: { page: 1, perPage: 100 },
+            sort: { field: 'id', order: 'DESC' }
+        }
+    );
+    if (isLoading) { return <Loading />; }
+    if (error) { return <p>ERROR</p>; }
+
     const handle = {
         barClick: (data: any) => {
             console.log(data);
@@ -16,6 +33,14 @@ const Barchart = () => {
         { bottle: '500ml', cola: 2200, cidar: 2000, fanta: 2100 },
         { bottle: '1000ml', cola: 3200, cidar: 3000, fanta: 3100 },
     ];
+
+    const rocketData = rockets?.map((r) => ({
+        rocket: r.name,
+        thrust: r.thrust,
+        payload: r.payload,
+        })
+    ) || [];
+    console.log(rocketData)
     return (
         // chart height이 100%이기 때문이 chart를 덮는 마크업 요소에 height 설정
         <div style={{ width: '100%', height: '333px', margin: '0 auto' }}>
@@ -23,27 +48,27 @@ const Barchart = () => {
                 /**
                  * chart에 사용될 데이터
                  */
-                data={data}
+                data={rocketData}
                 /**
                  * chart에 보여질 데이터 key (측정되는 값)
                  */
-                keys={['cola', 'cidar', 'fanta']}
+                keys={['thrust', 'payload']}
                 /**
                  * keys들을 그룹화하는 index key (분류하는 값)
                  */
-                indexBy="bottle"
+                indexBy="rocket"
                 /**
                  * chart margin
                  */
-                margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+                margin={{ top: 50, right: 130, bottom: 50, left: 100  }}
                 /**
                  * chart padding (bar간 간격)
                  */
-                padding={0.3}
+                padding={0.1}
                 /**
                  * chart 색상
                  */
-                colors={['olive', 'brown', 'orange']} // 커스터하여 사용할 때
+                colors={['olive', 'brown']} // 커스터하여 사용할 때
                 // colors={{ scheme: 'nivo' }} // nivo에서 제공해주는 색상 조합 사용할 때
                 /**
                  * color 적용 방식
@@ -57,7 +82,7 @@ const Barchart = () => {
                     labels: {
                         text: {
                             fontSize: 14,
-                            fill: '#c12121',
+                            fill: '#ffffff',
                         },
                     },
                     /**
@@ -84,7 +109,7 @@ const Barchart = () => {
                          */
                         ticks: {
                             text: {
-                                fontSize: 16,
+                                fontSize: 10,
                                 fill: '#174b49',
                             },
                         },
@@ -97,7 +122,7 @@ const Barchart = () => {
                     tickSize: 5, // 값 설명하기 위해 튀어나오는 점 크기
                     tickPadding: 5, // tick padding
                     tickRotation: 0, // tick 기울기
-                    legend: 'bottle', // bottom 글씨
+                    legend: 'rocket', // bottom 글씨
                     legendPosition: 'middle', // 글씨 위치
                     legendOffset: 40, // 글씨와 chart간 간격
                 }}
@@ -108,7 +133,7 @@ const Barchart = () => {
                     tickSize: 5, // 값 설명하기 위해 튀어나오는 점 크기
                     tickPadding: 5, // tick padding
                     tickRotation: 0, // tick 기울기
-                    legend: 'price', // left 글씨
+                    legend: 'thrust', // left 글씨
                     legendPosition: 'middle', // 글씨 위치
                     legendOffset: -60, // 글씨와 chart간 간격
                 }}

@@ -31,7 +31,7 @@ export const Dashboard = () => {
     <Grid container spacing={2}>
         {/*row 1*/}
         <Grid xs={12} md={8}>
-            <ReCharts />
+            <Barchart />
         </Grid>
         <Grid xs={12} md={4}>
             <center>
@@ -59,11 +59,11 @@ export const Dashboard = () => {
         </Grid>
 
         {/*row 4*/}
-        <Grid xs={12} md={6}>
+        <Grid xs={12} md={12}>
             <SimpleCharts />
         </Grid>
-        <Grid xs={12} md={6}>
-            <Barchart />
+        <Grid xs={12} md={12}>
+            <ReCharts />
         </Grid>
 
         {/*row 5*/}
