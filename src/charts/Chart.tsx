@@ -1,21 +1,46 @@
 import { BarChart } from '@mui/x-charts/BarChart';
+import { useGetList, Loading } from 'react-admin';
 
+type Rocket = {
+    id: number;
+    name: string;
+    thrust: number
+};
 
 function SimpleCharts() {
-    const data_x : string[] = ['Falcon 9', 'Ariane', 'Soyuz', 'Delta IV', 'Long March 3B', 'H-IIA', 'Falcon Heavy', 'GSLV Mk III', 'PSLV'];
-    const data_y: number[] = [6940, 13720, 4220, 7020,  10500, 2000, 22600, 6670, 4700];
+
+    const { data: rockets, total, isLoading, error } = useGetList<Rocket>(
+        'rockets',
+        {
+            pagination: { page: 1, perPage: 100 },
+            sort: { field: 'thrust', order: 'ASC' }
+        }
+    );
+    if (isLoading) { return <Loading />; }
+    if (error) { return <p>ERROR</p>; }
+
+    // if (rockets) {
+    //     rockets.forEach((rocket) => {
+    //         rocket_names.push(rocket.name);
+    //         rocket_thrusts.push(rocket.thrust);
+    //     });
+    // }
+
+    const rocket_names: string[] = rockets?.map((rocket) => rocket.name) || [];
+    const rocket_thrusts: number[] = rockets?.map((rocket) => rocket.thrust) || [];
+
     return (
             <BarChart
                 xAxis={[
                 {
                     id: 'barCategories',
-                    data: data_x,
+                    data: rocket_names,
                     scaleType: 'band',
                 },
                 ]}
                 series={[
                 {
-                    data: data_y,
+                    data: rocket_thrusts,
                 },
                 ]}
                 height={333}

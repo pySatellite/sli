@@ -3,6 +3,7 @@ import { useGetList, Loading } from 'react-admin';
 type Rocket = {
     id: number;
     name: string;
+    thrust: number
 };
 
 const ListRocket = ({perPage}) => {
@@ -21,7 +22,7 @@ const ListRocket = ({perPage}) => {
             <ul>
                 {/* TypeScript knows that posts is of type Post[] */}
                 {rockets.map(rocket =>
-                    <li key={rocket.id}>{rocket.name}</li>
+                    <li key={rocket.id}>{rocket.name} {rocket.thrust}</li>
                 )}
             </ul>
             <p>{rockets.length} / {total} articles</p>
