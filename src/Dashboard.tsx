@@ -6,6 +6,8 @@ import queryClient from "./data/queryClient";
 import SimpleCharts from "./charts/Chart"
 import ReCharts from "./charts/ReCharts"
 import Barchart from "./charts/NivoBar";
+import { Common } from "./Common"
+import ListRocket from "./ListRocket";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,8 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export const Dashboard = () => {
-    let ver = import.meta.env.VITE_SLI_VERSION
-    ver = ver.concat("-", process.env.NODE_ENV)
+    const ver : string = Common.getVersion();
     const { data: img_main } = useQuery('img_main', () => queryClient.getQueryData("img_main"));
     const { data: deploy_dt } = useQuery('deploy_dt', () => queryClient.getQueryData("deploy_dt"));
     const { data: isok } = useQuery('isok', () => queryClient.getQueryData("isok"));
@@ -63,6 +64,11 @@ export const Dashboard = () => {
         </Grid>
         <Grid xs={12} md={6}>
             <Barchart />
+        </Grid>
+
+        {/*row 5*/}
+        <Grid xs={12} md={12}>
+            <ListRocket perPage={10} />
         </Grid>
 
     </Grid>

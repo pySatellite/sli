@@ -1,11 +1,8 @@
 import { DataProvider, fetchUtils } from "react-admin";
 import { stringify } from "query-string";
+import { Common }from '../Common';
 
-let envApi = import.meta.env.VITE_API_FLY
-if ( process.env.NODE_ENV === 'development' ) {
-    envApi = import.meta.env.VITE_API_LOCAL;
-}
-const apiUrl = envApi;
+const apiUrl = Common.getApiUrl()
 const httpClient = fetchUtils.fetchJson;
 
 export const fcrudDataProvider: DataProvider = {
