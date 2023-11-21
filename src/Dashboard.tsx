@@ -6,7 +6,6 @@ import queryClient from "./data/queryClient";
 import SimpleCharts from "./charts/Chart"
 import ReCharts from "./charts/ReCharts"
 import Barchart from "./charts/NivoBar";
-import { Suspense } from 'react';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -29,8 +28,8 @@ export const Dashboard = () => {
 
     return (
     <Grid container spacing={2}>
+        {/*row 1*/}
         <Grid xs={12} md={8}>
-
             <ReCharts />
         </Grid>
         <Grid xs={12} md={4}>
@@ -38,27 +37,34 @@ export const Dashboard = () => {
                 <img src={img_main} height="333" width="90%"/>
             </center>
         </Grid>
-            <Grid xs={12} md={4}>
-        <Item>version : {ver}</Item>
+
+        {/*row 2*/}
+        <Grid xs={12} md={4}>
+            <Item>version : {ver}</Item>
         </Grid>
         <Grid xs={12} md={8}>
             <Item>🛰️ Satellite Location Information 🌌 🗺️ 📈</Item>
         </Grid>
-        <Grid xs={12} md={1}>
+
+        {/*row 3*/}
+        <Grid xs={12} md={2}>
             <Item>isok: {isok}</Item>
         </Grid>
         <Grid xs={12} md={2}>
             <Item>deploy_dt: {deploy_dt}</Item>
         </Grid>
-        <Grid xs={12} md={9}>
+        <Grid xs={12} md={8}>
             <Item>wel_msg: {wel_msg}</Item>
         </Grid>
+
+        {/*row 4*/}
         <Grid xs={12} md={6}>
             <SimpleCharts />
         </Grid>
         <Grid xs={12} md={6}>
             <Barchart />
         </Grid>
+
     </Grid>
     );
 }
