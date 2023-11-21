@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
-import { getRemoteConfig, getValue, fetchAndActivate, getString, getBoolean, getNumber} from "firebase/remote-config";
+import { getRemoteConfig, fetchAndActivate, getString} from "firebase/remote-config";
 import queryClient from './queryClient'; // Import the queryClient
 
 // TODO: Replace the following with your app's Firebase project configuration

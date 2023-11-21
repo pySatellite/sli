@@ -7,6 +7,7 @@ export namespace Common {
      * @returns {string} 개발 환경일 때는 VITE_API_LOCAL, 실제 환경일 때는 VITE_API_FLY
      */
     export function getApiUrl(): string {
+        // eslint-disable-next-line no-undef
         if (process.env.NODE_ENV === 'development') {
             // 개발 환경일 때는 VITE_API_LOCAL을 반환
             return import.meta.env.VITE_API_LOCAL as string;

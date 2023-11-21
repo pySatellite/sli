@@ -1,6 +1,6 @@
-import { Datagrid, DateField, List, NumberField, ReferenceField, TextField, SimpleList, Create, DateTimeInput} from 'react-admin';
+import { Datagrid, List, NumberField, ReferenceField, TextField, SimpleList, Create, DateTimeInput} from 'react-admin';
 import { useMediaQuery, Theme } from "@mui/material";
-import { Edit, NumberInput, ReferenceInput, SimpleForm, TextInput, DateInput } from 'react-admin';
+import { Edit, NumberInput, ReferenceInput, SimpleForm, TextInput } from 'react-admin';
 
 export const SatelliteList = () => {
     const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
