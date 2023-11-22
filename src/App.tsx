@@ -20,6 +20,9 @@ import queryClient from './data/queryClient'; // Import the queryClient
 import { MyLayout} from "./MyLayout";
 import {OrbitList} from "./list/orbits";
 
+import { Menu } from 'react-admin';
+
+
 export const App = () => (
       <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} catchAll={NotFound} theme={radiantLightTheme} darkTheme={nanoDarkTheme}
              queryClient={queryClient}
