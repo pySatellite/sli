@@ -1,50 +1,49 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-
+import * as Satellite from 'satellite.js';
 const SatelliteSimulation = () => {
     const containerRef = useRef();
 
     useEffect(() => {
-        // Scene
+        // Set up scene
         const scene = new THREE.Scene();
-
-        // Camera
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 5;
-
-        // Renderer
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         containerRef.current.appendChild(renderer.domElement);
 
-        // Satellites
-        const satellites = [];
-        for (let i = 0; i < 10; i++) {
-            const satellite = new THREE.Mesh(
-                new THREE.SphereGeometry(0.1, 32, 32),
-                new THREE.MeshBasicMaterial({ color: 0xffffff })
-            );
+        // Create a satellite
+        const satrec = Satellite.twoline2satrec(
+            '1 25544U 98067A   03124.96183528  .00007246  00000+0  63990-4 0  3220',
+            '2 25544  51.6361  13.7980 0004256  45.6675  16.0423 15.58778559250029'
+        );
 
-            // Set initial positions, velocities, and other properties for each satellite
-            satellite.position.set(Math.random() * 5 - 2.5, Math.random() * 5 - 2.5, Math.random() * 5 - 2.5);
-            satellites.push(satellite);
-            scene.add(satellite);
-        }
+        // Update satellite position
+        const updateSatellitePosition = () => {
+            const now = new Date();
+            const positionAndVelocity = Satellite.propagate(satrec, now);
+            const position = positionAndVelocity.position;
+            const x = position.x / 1000; // Convert to kilometers
+            const y = position.y / 1000;
+            const z = position.z / 1000;
 
-        // Animation
+            satelliteMesh.position.set(x, y, z);
+        };
+
+        // Create satellite mesh
+        const satelliteGeometry = new THREE.SphereGeometry(1, 32, 32);
+        const satelliteMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const satelliteMesh = new THREE.Mesh(satelliteGeometry, satelliteMaterial);
+        scene.add(satelliteMesh);
+
+        // Set camera position
+        camera.position.z = 5;
+
+        // Animation loop
         const animate = () => {
             requestAnimationFrame(animate);
 
-            // Update satellite positions based on their orbits
-            satellites.forEach(satellite => {
-                // Update the satellite's position based on its orbit logic
-                // For simplicity, you can use basic trigonometric functions here
-                satellite.position.x = Math.cos(Date.now() * 0.001) * 2;
-                satellite.position.y = Math.sin(Date.now() * 0.001) * 2;
-            });
-
-            // Update camera position
-            camera.lookAt(scene.position);
+            updateSatellitePosition();
 
             renderer.render(scene, camera);
         };
@@ -64,10 +63,9 @@ const SatelliteSimulation = () => {
 
         window.addEventListener('resize', handleResize);
 
-        // Cleanup
+        // Clean up
         return () => {
             window.removeEventListener('resize', handleResize);
-            // Additional cleanup logic, if needed
         };
     }, []);
 

@@ -1,8 +1,8 @@
 import {
-  Admin,
-  Resource,
-  ShowGuesser,
-  nanoDarkTheme , radiantLightTheme
+    Admin,
+    Resource,
+    ShowGuesser,
+    nanoDarkTheme, radiantLightTheme,
 } from "react-admin";
 
 import { fcrudDataProvider } from "./data/fcrudDataProvider";
@@ -14,9 +14,11 @@ import { OwnerList, OwnerCreate, OwnerEdit } from './list/owners'
 import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import RocketIcon from '@mui/icons-material/Rocket';
 import Face5Icon from '@mui/icons-material/Face5';
+import AnimationIcon from '@mui/icons-material/Animation';
 import NotFound from "./NotFound";
 import queryClient from './data/queryClient'; // Import the queryClient
 import { MyLayout} from "./MyLayout";
+import {OrbitList} from "./list/orbits";
 
 export const App = () => (
       <Admin dataProvider={fcrudDataProvider} dashboard={Dashboard} catchAll={NotFound} theme={radiantLightTheme} darkTheme={nanoDarkTheme}
@@ -40,6 +42,11 @@ export const App = () => (
             create={RocketCreate}
           />
           <Resource
+              name="orbits"
+              icon={AnimationIcon}
+              list={OrbitList}
+          />
+          <Resource
             name="owners"
             icon={Face5Icon}
             list={OwnerList}
@@ -48,5 +55,6 @@ export const App = () => (
             edit={OwnerEdit}
             create={OwnerCreate}
           />
+
       </Admin>
 );

@@ -39,3 +39,4 @@ npm run build
 - https://marmelab.com/react-admin/ToggleThemeButton.html
 - [github fork sync](https://velog.io/@yourmean/TIL-Github-Fork%ED%95%9C-Repository-Update-%ED%95%98%EA%B8%B0)
 - [React, Vue 개발자를 위한 VSCode Extension 추천](https://violetboralee.medium.com/react-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-vscode-extension-f50474b1cfac)
+- https://www.reddit.com/r/sveltejs/comments/zcqg6y/threejs_satellite_viewer_svelte_or_react/?rdt=58598
