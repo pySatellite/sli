@@ -1,7 +1,7 @@
 const Rhythm = () => {
     return (
         <div id="rhythm">
-            {/*<img src="images/diginori-card.jpeg" />*/}
+            <img src="images/diginori-card.jpeg" />
         </div>
     );
 };

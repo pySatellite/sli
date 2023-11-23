@@ -7,6 +7,6 @@ export const MyMenu = () => (
         <Menu.DashboardItem />
         <Menu.ResourceItems />
         <Menu.Item to="/earth" primaryText="Earth" leftIcon={<PublicIcon />}/>
-        {/*<Menu.Item to="/rhythm" primaryText="Rhythm" leftIcon={<LibraryMusicIcon />} />*/}
+        <Menu.Item to="/rhythm" primaryText="Rhythm" leftIcon={<LibraryMusicIcon />} />
     </Menu>
 );

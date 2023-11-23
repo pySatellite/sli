@@ -65,7 +65,7 @@ export const App = () => (
 
           <CustomRoutes>
               <Route path="/earth" element={<Earth />} />
-              {/*<Route path="/rhythm" element={<Rhythm />} />*/}
+              <Route path="/rhythm" element={<Rhythm />} />
           </CustomRoutes>
 
       </Admin>
