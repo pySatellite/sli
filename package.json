@@ -13,12 +13,14 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@material-ui/core": "^4.12.4",
     "@mui/material": "^5.14.18",
     "@mui/x-charts": "^6.18.1",
     "@nivo/bar": "^0.83.1",
     "@nivo/circle-packing": "^0.83.1",
     "@nivo/geo": "^0.83.1",
     "apexcharts": "^3.44.0",
+    "cesium": "^1.58.1",
     "firebase": "^10.6.0",
     "konva": "^9.2.3",
     "p5": "^1.8.0",
@@ -29,6 +31,7 @@
     "react-konva": "^18.2.10",
     "react-query": "^3.39.3",
     "recharts": "^2.10.1",
+    "resium": "^1.4.1",
     "satellite.js": "^5.0.0",
     "three": "^0.158.0"
   },
@@ -45,6 +48,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.8.8",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "vite-plugin-cesium": "^1.2.22"
   }
 }

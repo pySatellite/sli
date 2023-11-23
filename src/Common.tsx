@@ -7,14 +7,19 @@ export namespace Common {
      * @returns {string} 개발 환경일 때는 VITE_API_LOCAL, 실제 환경일 때는 VITE_API_FLY
      */
     export function getApiUrl(): string {
+        const apiPRD = import.meta.env.VITE_API_FLY
+
+        if (import.meta.env.VITE_API_FORCE_FLY === 'true' ) {
+            return apiPRD;
+        }
+
         // eslint-disable-next-line no-undef
         if (process.env.NODE_ENV === 'development') {
             // 개발 환경일 때는 VITE_API_LOCAL을 반환
             return import.meta.env.VITE_API_LOCAL as string;
-        } else {
-            // 실제 환경일 때는 VITE_API_FLY를 반환
-            return import.meta.env.VITE_API_FLY as string;
         }
+
+        return apiPRD;
     }
 
     /**

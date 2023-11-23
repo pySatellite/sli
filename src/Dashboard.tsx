@@ -8,8 +8,6 @@ import ReCharts from "./charts/ReCharts"
 import Barchart from "./charts/NivoBar";
 import { Common } from "./Common"
 import ListRocket from "./ListRocket";
-import SatelliteSimulation from './SatelliteSimulation'
-
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -75,11 +73,6 @@ export const Dashboard = () => {
         <Grid xs={12} md={8}>
             <Item>wel_msg: {wel_msg}</Item>
         </Grid>
-
-        <Grid xs={12} md={12}>
-            <SatelliteSimulation />
-        </Grid>
-
     </Grid>
     );
 }

@@ -22,7 +22,7 @@ import NotFound from "./NotFound";
 import queryClient from './data/queryClient'; // Import the queryClient
 import { MyLayout} from "./MyLayout";
 import {OrbitList} from "./list/orbits";
-import Car from "./components/Car";
+import Earth from "./components/Earth";
 
 
 
@@ -63,7 +63,7 @@ export const App = () => (
           />
 
           <CustomRoutes>
-              <Route path="/settings" element={<Car />} />
+              <Route path="/earth" element={<Earth />} />
           </CustomRoutes>
 
       </Admin>
