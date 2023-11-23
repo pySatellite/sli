@@ -1,14 +1,18 @@
 import {
-    Create, List, Edit,
-    SimpleForm, TextInput,
-    Datagrid, TextField, NumberField, SimpleList, DateField
+    List,
+    Datagrid, TextField, NumberField, SimpleList, DateField, TextInput
 } from 'react-admin';
 import { useMediaQuery, Theme } from "@mui/material";
 
 export const OrbitList = () => {
     const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
+
+    const orbitFilters = [
+        <TextInput source="q" label="Search" alwaysOn />
+    ];
+
     return (
-    <List>
+    <List filters={orbitFilters}>
         {isSmall ? (
                 <SimpleList
                     primaryText={(record) => record.name}

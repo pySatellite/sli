@@ -3,6 +3,7 @@ import {
     Resource,
     ShowGuesser,
     nanoDarkTheme, radiantLightTheme,
+    CustomRoutes
 } from "react-admin";
 
 import { fcrudDataProvider } from "./data/fcrudDataProvider";
@@ -15,12 +16,14 @@ import SatelliteAltIcon from '@mui/icons-material/SatelliteAlt';
 import RocketIcon from '@mui/icons-material/Rocket';
 import Face5Icon from '@mui/icons-material/Face5';
 import AnimationIcon from '@mui/icons-material/Animation';
+
+import { Route } from "react-router-dom";
 import NotFound from "./NotFound";
 import queryClient from './data/queryClient'; // Import the queryClient
 import { MyLayout} from "./MyLayout";
 import {OrbitList} from "./list/orbits";
+import Car from "./components/Car";
 
-import { Menu } from 'react-admin';
 
 
 export const App = () => (
@@ -58,6 +61,10 @@ export const App = () => (
             edit={OwnerEdit}
             create={OwnerCreate}
           />
+
+          <CustomRoutes>
+              <Route path="/settings" element={<Car />} />
+          </CustomRoutes>
 
       </Admin>
 );

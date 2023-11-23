@@ -1,5 +1,5 @@
 import {
-    Create, List, Edit, 
+    Create, List, Edit,
     SimpleForm, TextInput,
     Datagrid, TextField, NumberField, SimpleList
 } from 'react-admin';
@@ -7,8 +7,11 @@ import { useMediaQuery, Theme } from "@mui/material";
 
 export const OwnerList = () => {
     const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
+    const ownerFilters = [
+        <TextInput source="q" label="Search" alwaysOn />
+    ];
     return (
-    <List>
+    <List filters={ownerFilters}>
         {isSmall ? (
                 <SimpleList
                     primaryText={(record) => record.name}
