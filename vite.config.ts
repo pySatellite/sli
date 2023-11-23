@@ -11,4 +11,7 @@ export default defineConfig({
         host: true,
     },
     base: './',
+    build: {
+        outDir: './docs'
+    }
 });

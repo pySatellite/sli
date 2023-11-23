@@ -1,7 +1,8 @@
 import { DataProvider, fetchUtils } from "react-admin";
 import { stringify } from "query-string";
+import { Common }from '../Common';
 
-const apiUrl = import.meta.env.VITE_API_LOCAL;
+const apiUrl = Common.getApiUrl()
 const httpClient = fetchUtils.fetchJson;
 
 export const fcrudDataProvider: DataProvider = {
@@ -58,18 +59,20 @@ export const fcrudDataProvider: DataProvider = {
             }),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
-
+        console.log("hi");
         return httpClient(url).then(({ headers, json }) => ({
             data: json,
             total: parseInt((headers.get('content-range') || "0").split('/').pop() || 0, 10),
         }));
     },
 
-    update: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`, {
+    update: (resource, params) => {
+        // params.data['launch_time'] = JSON.parse(JSON.stringify(params.data['launch_time']))
+        return httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
-        }).then(({ json }) => ({ data: json })),
+        }).then(({ json }) => ({ data: json }));
+    },
 
     updateMany: (resource, params) => {
         const query = {
@@ -81,13 +84,15 @@ export const fcrudDataProvider: DataProvider = {
         }).then(({ json }) => ({ data: json }));
     },
 
-    create: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}`, {
+    create: (resource, params) => {
+        console.log(params)
+        return httpClient(`${apiUrl}/${resource}`, {
             method: 'POST',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({
             data: { ...params.data, id: json.id },
-        })),
+        }));
+    },
 
     delete: (resource, params) =>
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
