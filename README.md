@@ -126,4 +126,5 @@ npm run build
 - https://orbit.ing-now.com/https://orbit.ing-now.com/https://orbit.ing-now.com/
 - https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2023-170A
 - https://www.space-track.org/
-- 우주로가즈아*찾아1002
+- [react-three-fiber](https://github.com/pmndrs/react-three-fiber)
+- https://www.mornhee.works/blog/post/three-js-vs-react-three-fiber
