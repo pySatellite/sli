@@ -23,6 +23,7 @@ import queryClient from './data/queryClient'; // Import the queryClient
 import { MyLayout} from "./MyLayout";
 import {OrbitList} from "./list/orbits";
 import Earth from "./components/Earth";
+import Rhythm from "./components/Rhythm";
 
 
 
@@ -64,6 +65,7 @@ export const App = () => (
 
           <CustomRoutes>
               <Route path="/earth" element={<Earth />} />
+              {/*<Route path="/rhythm" element={<Rhythm />} />*/}
           </CustomRoutes>
 
       </Admin>

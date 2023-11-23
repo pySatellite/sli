@@ -128,3 +128,8 @@ npm run build
 - https://www.space-track.org/
 - [react-three-fiber](https://github.com/pmndrs/react-three-fiber)
 - https://www.mornhee.works/blog/post/three-js-vs-react-three-fiber
+- https://dprime.kr/g2/bbs/board.php?bo_table=comm&wr_id=9119936
+- https://www.inven.co.kr/webzine/news/?news=273441
+- https://patents.google.com/patent/KR20020043474A/ko
+- http://www.humanaidpost.com/news/articleView.html?idxno=26640
+- https://github.com/diginori/digiNORI.image/blob/master/%E1%84%89%E1%85%A1%E1%84%86%E1%85%AE%E1%86%AF%E1%84%82%E1%85%A9%E1%86%AF%E1%84%8B%E1%85%B5.ai
